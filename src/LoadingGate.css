@@ -1,0 +1,152 @@
+.loading-gate {
+  box-sizing: border-box;
+  min-height: 100%;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background:
+    radial-gradient(
+      ellipse 100% 70% at 50% 0%,
+      rgba(100, 60, 160, 0.28) 0%,
+      transparent 50%
+    ),
+    linear-gradient(
+      165deg,
+      #2a1842 0%,
+      #1a1028 45%,
+      #0e0818 100%
+    );
+}
+
+.loading-gate-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: clamp(200px, 25vw, 420px);
+  min-width: 0;
+}
+
+.loading-gate-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0 0.12em;
+  margin-bottom: 14px;
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #f4ecff;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.35);
+}
+
+.loading-gate-label {
+  flex: 0 0 auto;
+}
+
+.loading-gate-dots {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 5px;
+  padding-left: 2px;
+}
+
+.loading-gate-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
+}
+
+/* 第 1 个点位置固定且始终点亮；2～4 点按「1→4 个亮」循环 */
+.loading-gate-dot--1 {
+  opacity: 1;
+}
+
+.loading-gate-dot--2 {
+  animation: loading-gate-dot2 1.5s ease-in-out infinite;
+}
+
+.loading-gate-dot--3 {
+  animation: loading-gate-dot3 1.5s ease-in-out infinite;
+}
+
+.loading-gate-dot--4 {
+  animation: loading-gate-dot4 1.5s ease-in-out infinite;
+}
+
+@keyframes loading-gate-dot2 {
+  0%,
+  24% {
+    opacity: 0.12;
+  }
+  25%,
+  97% {
+    opacity: 1;
+  }
+  98%,
+  100% {
+    opacity: 0.12;
+  }
+}
+
+@keyframes loading-gate-dot3 {
+  0%,
+  49% {
+    opacity: 0.12;
+  }
+  50%,
+  97% {
+    opacity: 1;
+  }
+  98%,
+  100% {
+    opacity: 0.12;
+  }
+}
+
+@keyframes loading-gate-dot4 {
+  0%,
+  74% {
+    opacity: 0.12;
+  }
+  75%,
+  97% {
+    opacity: 1;
+  }
+  98%,
+  100% {
+    opacity: 0.12;
+  }
+}
+
+.loading-gate-track {
+  width: 100%;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+}
+
+.loading-gate-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #a78bfa 0%, #c4b5fd 45%, #e9d5ff 100%);
+  box-shadow: 0 0 12px rgba(167, 139, 250, 0.45);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loading-gate-dot--2,
+  .loading-gate-dot--3,
+  .loading-gate-dot--4 {
+    animation: none;
+    opacity: 0.5;
+  }
+}
