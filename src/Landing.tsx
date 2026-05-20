@@ -12,7 +12,7 @@ export default function Landing({ onEnter }: LandingProps) {
           className="landing-avatar-wrap landing-motion-blur landing-stagger--avatar"
         >
           <img
-            src="${import.meta.env.BASE_URL}landing-avatar.png"
+            src={`${import.meta.env.BASE_URL}landing-avatar.png`}
             alt=""
             width={196}
             height={196}
