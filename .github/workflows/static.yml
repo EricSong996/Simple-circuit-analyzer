@@ -31,6 +31,8 @@ jobs:
         run: npm install
       - name: Build
         run: npm run build
+        env:
+          PAGES_BASE: /Simple-circuit-analyzer/
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
